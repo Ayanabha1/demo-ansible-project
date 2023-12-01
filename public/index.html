@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 style="text-align: center" >This is my basic Ansible Project</h1>
+<h2 style="text-align: center">The things that I am using are as follows:</h2>
+<ul style="display: flex; flex-direction: column; width: 100%; align-items: center; padding-left: 0">
+	<li>Ansible with Ansible Roles</li>
+	<li>NodeJs</li>
+	<li>Nginx</li>
+	<li>Docker</li>
+</ul>
+
+<div id="demo" style="display: flex; padding-left: 0; align-items: center; gap: 6px; justify-content: center">
+	<span> Response from : </span>
+	<h3 id="hostname" style="width: fit-content"></h3>
+</div>
+
+<script>
+let hostname = location.hostname;
+document.getElementById("hostname").innerHTML = hostname;
+</script>
+
+</body>
+</html>
+
