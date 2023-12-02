@@ -17,3 +17,15 @@ Flow of Ansible to configure the vms is as follows:
 ## High Level Design (HLD)
 ![image](https://github.com/Ayanabha1/demo-ansible-project/assets/63809278/9ae6208c-6e06-423a-aab0-7938f39c1f25)
 
+## Usage Instructions
+
+- Copy the [ansible](https://github.com/Ayanabha1/demo-ansible-project/tree/master/ansible) folder to the root directory of your project
+
+- Create an inventory file named ```inventory```, following the format outlined in the [inventory_example](https://github.com/Ayanabha1/demo-ansible-project/blob/master/ansible/inventory_example)
+
+- Populate the inventory file with the IP addresses of your virtual machines.
+
+- Execute the command ```npm run start_vms```.
+
+- Sit back, relax, and enjoy a cup of coffee while Ansible takes care of the configuration process. ☕
+
