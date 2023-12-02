@@ -1,0 +1,11 @@
+[web_servers]
+ubuntu@1.2.3.4
+ubuntu@5.6.7.8
+
+[db_servers]
+ubuntu@48.65.5.12
+ubuntu@55.68.24.128
+
+
+This is just just an example file
+Create a file "inventory" in a similar format
