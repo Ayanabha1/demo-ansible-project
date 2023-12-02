@@ -1,0 +1,7 @@
+---
+- hosts: web_server
+  become: true
+  roles:
+    - docker
+    - setup_project
+    - nginx

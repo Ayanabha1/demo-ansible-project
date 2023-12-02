@@ -1,0 +1,39 @@
+---
+# tasks file for nginx
+- name: Install nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+
+- name: Unlink nginx default config
+  ansible.builtin.shell: "unlink /etc/nginx/sites-available/default"
+  ignore_errors: yes
+
+- name: Unlink nginx custom config (if exists)
+  ansible.builtin.shell: "unlink /etc/nginx/sites-available/rev_proxy.conf"
+  ignore_errors: yes
+
+- name: Remove any existing config file
+  ansible.builtin.shell: "rm -r /etc/nginx/sites-enabled/* && rm -r /etc/nginx/sites-available/*"
+  ignore_errors: yes
+
+- name: Copy Nginx config from Ansible host to target server
+  ansible.builtin.copy:
+    src: "./roles/nginx/files/rev_proxy.conf"
+    dest: "/etc/nginx/sites-available/rev_proxy.conf"
+
+- name: Link the new config file to sites-enabled
+  ansible.builtin.shell: "ln -s /etc/nginx/sites-available/rev_proxy.conf /etc/nginx/sites-enabled/"
+
+- name: Check status
+  ansible.builtin.shell: "nginx -t"
+  register: nginx_debug_log
+
+- name: Show nginx status
+  ansible.builtin.debug: 
+    msg: "{{ nginx_debug_log }}"
+
+- name: Restart Nginx Service
+  ansible.builtin.shell: "systemctl restart nginx"
+
+

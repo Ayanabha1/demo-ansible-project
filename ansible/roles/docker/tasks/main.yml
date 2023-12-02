@@ -1,0 +1,22 @@
+---
+# tasks file for docker
+#
+- name: Create directory to place the shell script
+  ansible.builtin.shell: "mkdir /home/ubuntu/setup_docker"
+  ignore_errors: yes
+
+- name: Copy shell script file to remote server
+  ansible.builtin.copy:
+    src: "./roles/docker/files/install_docker.sh"
+    dest: "/home/ubuntu/setup_docker/install_docker.sh"
+  ignore_errors: yes
+
+- name: Give all permissions
+  ansible.builtin.shell: "chmod -R 777 ."
+  args: 
+    chdir: "/home/ubuntu/setup_docker"
+
+- name: Run the shell script
+  ansible.builtin.shell: "./install_docker.sh >> install_docker_log.txt"
+  args:
+    chdir: "/home/ubuntu/setup_docker"

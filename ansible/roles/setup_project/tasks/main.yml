@@ -1,0 +1,27 @@
+---
+# tasks file for setup_project
+
+- name: Pull project from github
+  git:
+    repo: "{{ repo_url }}"
+    dest: "{{ dest }}"
+  register: checkout_out
+
+- name: Clone Output
+  ansible.builtin.debug:
+    msg: "{{ checkout_out }}"
+
+- name: Take down all running containers
+  ansible.builtin.shell: "docker-compose down"
+  args:
+    chdir: "/home/ubuntu/project/demo_proj"
+
+- name: Run docker container (Start the project)
+  ansible.builtin.shell: "docker-compose up"
+  async: 200
+  poll: 0
+  args:
+    chdir: "/home/ubuntu/project/demo_proj"
+
+
+

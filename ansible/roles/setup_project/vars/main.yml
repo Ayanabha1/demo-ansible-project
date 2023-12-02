@@ -1,0 +1,4 @@
+---
+# vars file for setup_project
+repo_url: https://github.com/Ayanabha1/demo-ansible-project
+dest: /home/ubuntu/project/demo_proj
