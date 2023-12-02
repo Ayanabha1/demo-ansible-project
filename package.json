@@ -1,6 +1,7 @@
 {
   "scripts": {
-     "start": "node index.js"
+    "start": "node index.js",
+    "start_vms": "ansible-playbook -i ./ansible/inventory ./ansible/playbook.yml"
   },
   "dependencies": {
     "express": "^4.18.2",
